@@ -1,0 +1,26 @@
+export const USER_SIGNIN = 'USER_SIGNIN';
+export const USER_INPUT = 'USER_INPUT';
+export const USER_SIGNOUT = 'USER_SIGNOUT';
+export const USER_EDIT_INPUT = 'USER_EDIT_INPUT';
+export const USER_EDIT_SET = 'USER_EDIT_SET';
+export const USER_EDIT_APPLY = 'USER_EDIT_APPLY';
+
+export const NOTIFY = 'NOTIFY';
+export const NOTIFY_REMOVE = 'NOTIFY_REMOVE';
+
+export const BOOKING_ALL = 'BOOKING_ALL';
+export const BOOKING_CHANGE = 'BOOKING_CHANGE';
+export const BOOKING_ADD = 'BOOKING_ADD';
+export const BOOKING_DELETE = 'BOOKING_DELETE';
+export const BOOKING_UPDATE = 'BOOKING_UPDATE';
+export const BOOKING_SELECT = 'BOOKING_SELECT'
+
+export const CALENDAR_ID = '5a90221562d436068c0dc939'
+export const CALENDAR_INFO = 'CALENDAR_INFO';
+export const CALENDAR_MOD = 'CALENDAR_MOD';
+export const CALENDAR_SET = 'CALENDAR_SET';
+export const CALENDAR_SELECT = 'CALENDAR_SELECT';
+export const CALENDAR_PROGRESS = 'CALENDAR_PROGRESS';
+export const CALENDAR_ERROR = 'CALENDAR_ERROR';
+export const CALENDAR_INPUT = 'CALENDAR_INPUT';
+export const CALENDAR_POST = 'CALENDAR_POST';
