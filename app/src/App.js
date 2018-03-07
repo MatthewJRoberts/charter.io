@@ -10,7 +10,6 @@ import Signup from './containers/Signup';
 import Signin from './containers/Signin';
 import Dashboard from './containers/Dashboard';
 import Account from './containers/Account';
-import Layout from './components/Layout';
 import Bookings from './containers/Bookings';
 import Calendar from './Calendar/Calendar';
 
@@ -40,7 +39,7 @@ class App extends Component {
       <Switch>
         <Route path='/signup' exact component={ Signup } /> 
         <Route path='/signin' exact component={ Signin } /> 
-        <Route path='/calendar' exact component={ Calendar } />
+        <Route path='/calendar/:id' exact component={ Calendar } />
         <Redirect to="/signin" /> 
       </Switch>
     );
@@ -50,7 +49,7 @@ class App extends Component {
         <Switch>
           <Route path='/' exact component={ Dashboard } /> 
           <Route path='/bookings' exact component={ Bookings } /> 
-          <Route path='/calendar' exact component={ Calendar } />
+          <Route path='/calendar/:id' exact component={ Calendar } />
           <Route path='/account' exact component={ Account } />
           <Redirect to="/" /> 
         </Switch>
@@ -59,9 +58,7 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <Layout user_signout={ this.props.user_signout } >
-          { routes }
-        </Layout>
+        { routes }
       </BrowserRouter>
     );
   }
@@ -78,8 +75,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     user_autosignin: () => dispatch(actionCreators.user_autosignin()),
-    booking_all: (payload) => dispatch(actionCreators.booking_all(payload)),
-    user_signout: () => dispatch(actionCreators.user_signout())
+    booking_all: (payload) => dispatch(actionCreators.booking_all(payload))
   }
 }
 

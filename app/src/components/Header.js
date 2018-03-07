@@ -18,7 +18,7 @@ const header = props => {
                     <div className="links">
                         <NavLink to="/" className="primary" exact={true} activeClassName="active">Requests</NavLink>
                         <NavLink to="/bookings" className="primary" exact={true} activeClassName="active">Bookings</NavLink>
-                        <NavLink to="/calendar" className="primary" exact={true} activeClassName="active">Calendar</NavLink>
+                        <NavLink to={`/calendar/${ props.id }`} className="primary" exact={true} activeClassName="active">Calendar</NavLink>
                     </div>
                     <div className="links2">
                         <div className="secondary">

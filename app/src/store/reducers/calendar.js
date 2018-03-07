@@ -26,6 +26,11 @@ const initialState = {
 
 const reducer = ( state = initialState, action ) => {
     switch(action.type) {
+        case actionTypes.CALENDAR_STOP:
+            return {
+                ...state,
+                infoLoaded: true
+            }
         case actionTypes.CALENDAR_INFO:
             return {
                 ...state,

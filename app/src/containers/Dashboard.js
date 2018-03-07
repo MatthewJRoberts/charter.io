@@ -6,15 +6,23 @@ import Error from './../components/Error';
 import ReqBookings from './../components/ReqBookings';
 import ReqBookingAdd from './../components/ReqBookingsAdd';
 import ReqBookingSelect from '../components/ReqBookingSelect';
+import Header from './../components/Header';
 
 class Dashboard extends Component {
     render() {
         return (
             <div>
+                <Header userSignout={ this.props.user_signout } id={ this.props.user._id } />
                 <div className="container">
                     <Error err={ this.props.error } clicked={ this.props.error_remove } />
                 </div>
                 <div className="container" style={{padding: '1em', boxSizing: 'border-box'}}>
+
+                    <p>Add your calendar to your website: </p>
+                    <code>
+                        {`<iframe src="http://localhost:3000/calendar/${ this.props.user._id }" width=100%" height="600px"></iframe>`}
+                    </code>
+
                     <p>Add a Booking Manually</p>
                     <ReqBookingAdd addbooking={ this.props.addbooking } addbookingchange={ this.props.booking_change } addbookingsubmit={ this.props.booking_add } userid={ this.props.user._id } />
 
@@ -51,6 +59,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         error_remove: () => dispatch(actionCreators.error_remove()),
+        user_signout: () => dispatch(actionCreators.user_signout()),
         booking_change: payload => dispatch(actionCreators.booking_change(payload)),
         booking_add: payload => dispatch(actionCreators.booking_add(payload)),
         booking_delete: payload => dispatch(actionCreators.booking_delete(payload)),

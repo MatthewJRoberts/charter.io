@@ -5,16 +5,13 @@ import * as actionCreators from './../store/actions/index';
 import Error from './../components/Error';
 import ReqBookings from './../components/ReqBookings';
 import ReqBookingSelect from '../components/ReqBookingSelect';
-import Modal from './../components/Modal';
+import Header from './../components/Header';
 
 class Dashboard extends Component {
     render() {
         return (
             <div>
-                <Modal 
-                    active={ this.props.modalActive } 
-                    toggle={ this.props.modal_toggle }
-                    onConfirm={ false }>Are you sure?</Modal>
+                <Header userSignout={ this.props.user_signout } id={ this.props.user._id } />
                 <div className="container">
                     <Error err={ this.props.error } clicked={ this.props.error_remove } />
                 </div>
@@ -51,8 +48,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         error_remove: () => dispatch(actionCreators.error_remove()),
+        user_signout: () => dispatch(actionCreators.user_signout()),
         booking_delete: payload => dispatch(actionCreators.booking_delete(payload)),
-        modal_toggle: () => dispatch(actionCreators.modal_toggle()),
         booking_update: payload => dispatch(actionCreators.booking_update(payload)),
         booking_select: payload => dispatch(actionCreators.booking_select(payload))
     }

@@ -9,19 +9,15 @@ class Calendar extends Component {
 
     componentDidMount() {
         this.props.calender_set();
-        if(this.props.user._id && !this.props.infoLoaded) {
+        if(!this.props.infoLoaded) {
             if(this.props.bookings.length === 0) {
-                this.props.calendar_info({calendarid: this.props.user._id});
+                this.props.calendar_info({calendarid: this.props.match.params['id']});
             }
         }
     }
 
     componentDidUpdate() {
-        if(this.props.user._id && !this.props.infoLoaded) {
-            if(this.props.bookings.length === 0) {
-                this.props.calendar_info({calendarid: this.props.user._id});
-            }
-        }
+        
 
         if(this.props.progress === 1) {
             if(this.props.selectedDays.start === 0 || this.props.selectedDays.end === 0) {
@@ -56,7 +52,6 @@ class Calendar extends Component {
             {m:'November', d:30}, 
             {m:'December', d:31}
         ];
-        // const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         // Leap Year
         if((this.props.selectedYear % 4) === 0) {
             months[1].d = 29;
@@ -76,14 +71,14 @@ class Calendar extends Component {
                 calendar_post={ this.props.calendar_post }
                 calendar_progress={ this.props.calendar_progress }
                 calendar_input={ this.props.calendar_input }
-                user={ this.props.user } />
+                calendarID={ this.props.match.params['id'] } />
         )
 
         let detailSection = (
             <section className="details">
                 <CalendarError type={ this.props.error.type } error={ this.props.error.msg } noline={true} />
                 <p className="title1">To Book:</p>
-                <h2 className="title">{ this.props.info.email || this.props.user.username }</h2>
+                <h2 className="title">{ this.props.info.email || "Contact Me" }</h2>
                 <p className="title2">Or fill in the form below: </p>
 
                 <div className="form" style={{width: '50%', margin: '0 auto'}}>
@@ -167,7 +162,6 @@ const mapStateToProps = state => {
         error: state.calendar.error,
         customerInfo: state.calendar.customerInfo,
         info: state.calendar.info,
-        user: state.user.user,
         infoLoaded: state.calendar.infoLoaded
     }
 }

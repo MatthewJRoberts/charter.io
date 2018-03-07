@@ -6,8 +6,14 @@ export const calendar_info = payload => {
         axios.get(`/user/${ payload.calendarid }`).then(response => {
             axios.get(`/booking/all/accepted/${ payload.calendarid }`).then(response2 => {
                 dispatch(calendar_info_send({bookings: response2.data, info: response.data.info}));
-            }).catch(e => dispatch(calendar_error({type: 'negative', msg: 'Failed To Fetch Calendar Information.'})));
-        }).catch(e => dispatch(calendar_error({type: 'negative', msg: 'Failed To Fetch Calendar Information.'})));
+            }).catch(e => {
+                dispatch(calendar_error({type: 'negative', msg: 'Failed To Fetch Calendar Information.'}));
+                dispatch(calendar_stop());
+            });
+        }).catch(e => {
+            dispatch(calendar_error({type: 'negative', msg: 'Failed To Fetch Calendar Information.'}));
+            dispatch(calendar_stop());
+        });
     }
 }
 export const calendar_info_send = payload => {
@@ -173,5 +179,11 @@ export const calendar_post_send = payload => {
     return {
         type: actionTypes.CALENDAR_POST,
         payload
+    }
+}
+
+export const calendar_stop = payload => {
+    return {
+        type: actionTypes.CALENDAR_STOP
     }
 }

@@ -564,3 +564,11 @@ div.selectGrid div.email { grid-area: email }
 div.selectGrid div.phone { grid-area: phone }
 div.selectGrid div.message { grid-area: message }
 div.selectGrid div.date { grid-area: date }
+
+code {
+  display: block;
+  margin: 1em 0;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background: #f3f3f3;
+}

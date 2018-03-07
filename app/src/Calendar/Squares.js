@@ -179,7 +179,7 @@ const squares = props => {
                         <p className="total">Send Message</p>
                         <a 
                             className="button" 
-                            onClick={ e => props.calendar_post({customerInfo: props.customerInfo, selectedDays: props.selectedDays, calendarid: props.user._id}) }
+                            onClick={ e => props.calendar_post({customerInfo: props.customerInfo, selectedDays: props.selectedDays, calendarid: props.calendarID}) }
                             style={{
                                 border: 'solid 1px #1565c0',
                                 float: 'right'
